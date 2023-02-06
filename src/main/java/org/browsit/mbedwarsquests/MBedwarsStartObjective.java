@@ -47,7 +47,7 @@ public class MBedwarsStartObjective extends CustomObjective implements Listener 
                 final Player p = quester.getPlayer();
                 final Map<String, Object> dataMap = getDataForPlayer(p, this, q);
                 if (dataMap != null) {
-                    final String arenaNames = (String)dataMap.getOrDefault("SBW Start Arena", "ANY");
+                    final String arenaNames = (String)dataMap.getOrDefault("MBW Start Arena", "ANY");
                     if (arenaNames == null) {
                         return;
                     }
