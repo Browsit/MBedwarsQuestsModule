@@ -1,0 +1,8 @@
+name: MBedwarsQuests
+version: 1.0
+description: Quests module for Marcely's BedWars
+author: Browsit
+website: https://github.com/Browsit/MBedwarsQuestsModule
+
+main: org.browsit.mbedwarsquests.MBedWarsModule
+depend: [MBedwars, Quests]
