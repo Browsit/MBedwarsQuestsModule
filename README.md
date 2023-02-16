@@ -3,8 +3,8 @@ Adds Marcely's Bedwars objectives to Quests
 
 ## Download
 Distributed through these fine vendors:
-- Lectern (TBA)
-- SpigotMC (TBA)
+- Lectern (https://lectern.browsit.org/resources/resource/46-marcely039s-bedwars-quests-module/)
+- SpigotMC (https://www.spigotmc.org/resources/marcelys-bedwars-quests-module.107857/)
 
 ## Usage
 DO NOT PUT IN YOUR /plugins FOLDER. Place in /Quests/modules only!
