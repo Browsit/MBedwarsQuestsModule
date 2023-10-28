@@ -6,7 +6,7 @@
 
     <groupId>org.browsit.mbedwarsquests</groupId>
     <artifactId>MBedwarsQuestsModule</artifactId>
-    <version>1.1</version>
+    <version>2.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,9 +35,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>me.blackvein.quests</groupId>
+            <groupId>me.pikamug.quests</groupId>
+            <artifactId>quests-api</artifactId>
+            <version>5.0.0-rc.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.pikamug.quests</groupId>
             <artifactId>quests-core</artifactId>
-            <version>4.5.3</version>
+            <version>5.0.0-rc.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

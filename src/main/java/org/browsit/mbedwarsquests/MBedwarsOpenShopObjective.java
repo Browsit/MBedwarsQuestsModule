@@ -1,16 +1,16 @@
 package org.browsit.mbedwarsquests;
 
 import de.marcely.bedwars.api.event.player.PlayerOpenShopEvent;
-import me.blackvein.quests.CustomObjective;
-import me.blackvein.quests.Quest;
-import me.blackvein.quests.Quester;
+import me.pikamug.quests.module.BukkitCustomObjective;
+import me.pikamug.quests.player.Quester;
+import me.pikamug.quests.quests.Quest;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import java.util.Map;
 
-public class MBedwarsOpenShopObjective extends CustomObjective implements Listener {
+public class MBedwarsOpenShopObjective extends BukkitCustomObjective implements Listener {
 
     public MBedwarsOpenShopObjective() {
         setName("MBedwars Open Shop Objective");
@@ -45,7 +45,7 @@ public class MBedwarsOpenShopObjective extends CustomObjective implements Listen
         }
         for (final Quest q : quester.getCurrentQuests().keySet()) {
             final Player p = quester.getPlayer();
-            final Map<String, Object> dataMap = getDataForPlayer(p, this, q);
+            final Map<String, Object> dataMap = getDataForPlayer(p.getUniqueId(), this, q);
             if (dataMap != null) {
                 final String arenaNames = (String)dataMap.getOrDefault("MBW Open Arena", "ANY");
                 if (arenaNames == null) {
@@ -54,7 +54,7 @@ public class MBedwarsOpenShopObjective extends CustomObjective implements Listen
                 final String[] spl = arenaNames.split(",");
                 for (final String str : spl) {
                     if (str.equalsIgnoreCase("ANY") || event.getArena().getName().equalsIgnoreCase(str)) {
-                        incrementObjective(p, this, 1, q);
+                        incrementObjective(p.getUniqueId(), this, q, 1);
                         break;
                     }
                 }
