@@ -1,6 +1,7 @@
 package org.browsit.mbedwarsquests;
 
 import de.marcely.bedwars.api.event.arena.RoundEndEvent;
+import me.pikamug.quests.enums.ObjectiveType;
 import me.pikamug.quests.module.BukkitCustomObjective;
 import me.pikamug.quests.player.Quester;
 import me.pikamug.quests.quests.Quest;
@@ -44,9 +45,9 @@ public class MBedwarsEndObjective extends BukkitCustomObjective implements Liste
             if (quester == null) {
                 return;
             }
-            for (final Quest q : quester.getCurrentQuests().keySet()) {
+            for (final Quest quest : quester.getCurrentQuests().keySet()) {
                 final Player p = quester.getPlayer();
-                final Map<String, Object> dataMap = getDataForPlayer(p.getUniqueId(), this, q);
+                final Map<String, Object> dataMap = getDataForPlayer(p.getUniqueId(), this, quest);
                 if (dataMap != null) {
                     final String arenaNames = (String)dataMap.getOrDefault("MBW End Arena", "ANY");
                     if (arenaNames == null) {
@@ -56,7 +57,14 @@ public class MBedwarsEndObjective extends BukkitCustomObjective implements Liste
                     for (final String str : spl) {
                         if (str.equalsIgnoreCase("ANY") || event.getArena().getName().equalsIgnoreCase(str)) {
                             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(MBedwarsModule
-                                    .getQuests(), () -> incrementObjective(p.getUniqueId(), this, q, 1), 40L);
+                                    .getQuests(), () -> incrementObjective(p.getUniqueId(), this, quest, 1), 40L);
+
+                            quester.dispatchMultiplayerEverything(quest, ObjectiveType.CUSTOM,
+                                    (final Quester q, final Quest cq) -> {
+                                        Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(MBedwarsModule
+                                                .getQuests(), () -> incrementObjective(q.getUUID(), this, quest, 1), 260L);
+                                        return null;
+                                    });
                             break;
                         }
                     }
